@@ -1,0 +1,42 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hint for the app demo</h4>
+    </div>
+    <div class="modal-body">
+      <p>Log in as <b>administrator</b> to check all the features of the application.</p>
+      <p>username: <b>admin</b></p> <p>password: <b>admin</b></p>
+      <p>To see the app from <b>students/teachers</b> perspective:</p>
+      <p>Username: <b>student/teacher</b></p>
+      <p>Password: <b>student/teacher</b></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
+    </div>
+  </ng-template>
+ 
+<div class="container-window" style="padding-top: 20px;">
+    <div>
+      <h1>Login</h1>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        
+        
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input id="username" name="username" class="form-control"
+                    required
+                    [(ngModel)]="user.username" #username="ngModel" >
+          </div>
+
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control"
+                    required
+                    [(ngModel)]="user.password" #password="ngModel" >
+          </div>
+   
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
+      </form>
+    </div>
+</div>
+
+  

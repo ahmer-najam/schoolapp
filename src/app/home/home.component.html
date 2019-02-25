@@ -1,0 +1,75 @@
+ 
+  <div class="my-container">
+      <h1 class="fadeInDown animated">Welcome to school management app</h1>
+      <h2 class="fadeInDown animated">Click to find out about the features</h2>
+      <div class="nav-buttons">
+        <div class="btn">
+            <a class="btn btn-success" (click)="scrollToElement(featuresSection)">Features</a>
+        </div>
+        <div class="btn">
+            <a class="btn btn-success" (click)="scrollToElement(contactSection)">Contact</a>
+        </div>
+      </div>
+      
+  </div>
+  
+  <div #featuresSection class="container">
+
+   <h1>Features</h1>
+
+  <div class="row">
+
+      <div class="column">
+          <div class="card">
+              <img class="card-img-top" src="assets/images/student.png" style="width:128px;height:128px;margin-left: auto;margin-right: auto;">
+              <div class="card-body">
+              <h4 class="card-title">Users</h4>
+              <p class="card-text">You can log in as one of three different roles: administrator, teacher and students. As administrator
+                you have acces to all the features including: calendar, list of students and teachers, creating accounts, statistics and many editing options.
+              </p>
+              <a routerLink="/students" class="btn btn-primary">Students</a>
+              </div>
+           </div> 
+      </div>
+
+  <div class="column">
+    <div class="card">
+      <img class="card-img-top" src="assets/images/calendar.png" style="width:128px;height:128px;margin-left: auto;margin-right: auto;">
+      <div class="card-body">
+      <h4 class="card-title">Calendar</h4>
+      <p class="card-text">Calendar allows to schedule all the lessons and important events. 
+       When logged in as administrator you can filter lessons by teacher, student or course, edit them, drag and resize. When logged as teacher or student you have acces only your lessons without editing options.</p>
+      <a routerLink="/calendar" class="btn btn-primary">Calendar</a>
+      </div>
+   </div> 
+  </div>
+
+  
+  <div class="column">
+      <div class="card">
+          <img class="card-img-top" src="assets/images/stats.png" style="width:128px;height:128px;margin-left: auto;margin-right: auto;">
+          <div class="card-body">
+          <h4 class="card-title">Statistics</h4>
+          <p class="card-text">As administrator you have access to different 
+            statistics about number of lessons, students, percentage of attending in each course and many more.</p>
+          <a routerLink="/diagrams" class="btn btn-primary">Diagrams</a>
+          </div>
+        </div>
+  </div>
+</div>
+  
+</div>
+
+<div class="container" #contactSection style="padding-top: 30px;">
+<div class="jumbotron">
+    <h1 class="display-4">Contact</h1>
+    <p class="lead">Author: Łukasz Zawistowski. Email me at: zaw.lukasz@gmail.com</p>
+    <hr class="my-4">
+    <p>Find me on github:</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" (click)="goToLink('https://github.com/zawlukasz')" role="button">Github</a>
+    </p>
+  </div>
+ 
+</div>
+

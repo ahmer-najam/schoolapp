@@ -1,0 +1,76 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{modalData.title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+  <div class="modal-body">
+      <form>
+      <div class="form-group">
+          <label for="search-box-student">Select student:</label>
+          <input class="form-control" placeholder="type last name..." #searchBoxStudent id="search-box-student" 
+          (input)="searchStudents(searchBoxStudent.value)" 
+          (click)="searchStudents(searchBoxStudent.value); searchBoxStudent.value = null">
+          <ul class="list-group">
+            <li *ngFor="let user of students$ | async" class="list-group-item" (click)="selectStudent(user); searchBoxStudent.value = user.firstName + ' ' + user.lastName">
+                {{user.firstName}} {{user.lastName}}
+            </li>
+          </ul>               
+      </div>
+  
+      <div class="form-group">
+        <label for="search-box-teacher">Select teacher:</label>
+        <input class="form-control" placeholder="type last name..." #searchBoxTeacher id="search-box-teacher" 
+        (input)="searchTeachers(searchBoxTeacher.value)" 
+        (click)="searchTeachers(searchBoxTeacher.value); searchBoxTeacher.value = null"/>
+        <ul class="list-group">
+          <li *ngFor="let user of teachers$ | async" class="list-group-item" (click)="selectTeacher(user); searchBoxTeacher.value = user.firstName + ' ' + user.lastName">
+              {{user.firstName}} {{user.lastName}}
+          </li>
+        </ul>
+    </div>
+  
+    <div class="form-group">
+      <label for="search-box-course">Select course:</label>
+      <input class="form-control" placeholder="type course name..." #searchBoxCourse id="search-box-course" 
+      (input)="searchCourses(searchBoxCourse.value)" 
+      (click)="searchCourses(searchBoxCourse.value); searchBoxCourse.value = null"/>
+      <ul class="list-group">
+        <li *ngFor="let course of courses$ | async" class="list-group-item" (click)="selectCourse(course); searchBoxCourse.value = course.title">
+            {{course.title}}
+        </li>
+      </ul>               
+    </div>
+  
+     
+      <div class="form-group">
+          <label for="date">Select datetime:</label>
+          <input type="text" id="date" name="date" class="form-control" mwlFlatpickr
+              [(ngModel)]="modalData.newStart" [enableTime]="true" dateFormat="Y-m-dTH:i" 
+              altFormat="F j, Y H:i"
+              placeholder="Not set">
+      </div>
+  
+      <div class="form-group">
+          <label for="length">Set lessons length: (minutes)</label>
+          <input type="number" id="length" name="length" class="form-control" 
+            [(ngModel)]="modalData.length">
+      </div>
+  
+      <div class="form-group" *ngIf="modalData.newLesson">
+        <label for="date">Repeat weekly until:</label>
+        <input type="text" id="date-repeat" name="date-repeat" class="form-control" mwlFlatpickr
+            [(ngModel)]="modalData.repeatUntil" [enableTime]="true" dateFormat="Y-m-dTH:i" 
+            altFormat="F j, Y H:i"
+            placeholder="Repeat until...">
+      </div>
+  
+  
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" 
+    (click)="activeModal.dismiss('Cross click'); this.saveButtonClick();"
+    [disabled]="isDisabled()"
+    >Save</button>
+  </div>

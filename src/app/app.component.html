@@ -1,21 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar navbar-expand-md navbar-dark bg-light fixed-top">
+  <a class="navbar-brand" routerLink="/" href="#">Schoolapp</a>
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+    data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav mr-auto">
 
-<router-outlet></router-outlet>
+      <a class="nav-link" routerLink="/students" *ngIf="adminCheck()" (click)="isNavbarCollapsed = true">Students</a>
+      <a class="nav-link" routerLink="/courses" *ngIf="adminCheck()" (click)="isNavbarCollapsed = true">Courses</a>
+      <a class="nav-link" routerLink="/diagrams" *ngIf="adminCheck()" (click)="isNavbarCollapsed = true">Stats</a>
+      <a class="nav-link" routerLink="/calendar" *ngIf="anyUserCheck()" (click)="isNavbarCollapsed = true">Calendar</a>
+      <a class="nav-link" routerLink="/register" (click)="isNavbarCollapsed = true">Register</a>
+      <a class="nav-link" routerLink="/login" (click)="isNavbarCollapsed = true">Login</a>
+    </ul>
+
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+
+
+        <li class="nav-item dropdown" ngbDropdown *ngIf="this.authenticationService.user">
+          <a class="nav-link dropdown-toggle" id="id01" ngbDropdownToggle>Logged as
+            {{this.authenticationService.user.firstName}}</a>
+          <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+            <a class="dropdown-item" (click)="this.authenticationService.logout()">Log out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="content" style="padding-top: 79px;">
+  <router-outlet></router-outlet>
+</div>
