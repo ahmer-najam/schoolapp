@@ -24,7 +24,7 @@
           <a class="nav-link dropdown-toggle" id="id01" ngbDropdownToggle>Logged as
             {{this.authenticationService.user.firstName}}</a>
           <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
-            <a class="dropdown-item" (click)="this.authenticationService.logout()">Log out</a>
+            <a class="dropdown-item" routerLink="/" (click)="this.authenticationService.logout()">Log out</a>
           </div>
         </li>
       </ul>
