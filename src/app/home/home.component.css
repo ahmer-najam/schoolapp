@@ -44,8 +44,8 @@ body {
       position: relative;
       color: #000000;
       font-family: Montserrat;
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
   }
   .my-container div.nav-buttons {
     padding-top: 50px;
@@ -101,7 +101,8 @@ h1 {
 }
 
 .btn.btn-success {
-  font-family: Montserrat,Georgia,serif;
+  font-family: Montserrat;
   font-weight: 700;
   font-size: 20px;
+  border-radius: 12px;
 }
